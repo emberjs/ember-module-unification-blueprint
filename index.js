@@ -1,4 +1,4 @@
-const dasherize = require('ember-cli-string-utils').dasherize;
+const stringUtil = require('ember-cli-string-utils');
 
 module.exports = {
   description: 'Ember CLI blueprint for initializing a Ember application with a module unification layout.',
@@ -9,10 +9,18 @@ module.exports = {
   // ],
 
   locals(options) {
-    let name = options.entity.name;
-    let component = componentize(name);
+    let entity = options.entity;
+    let rawName = entity.name;
+    let name = stringUtil.dasherize(rawName);
+    let namespace = stringUtil.classify(rawName);
 
-    return { name, component };
+    return {
+      name,
+      modulePrefix: name,
+      namespace,
+      emberCLIVersion: require('../../package').version,
+      yarn: options.yarn,
+    };
   },
 
   fileMapTokens(options) {
@@ -21,14 +29,3 @@ module.exports = {
     }
   }
 };
-
-// Component names must have at least one dash, so we prefix the component name
-// if it doesn't have one. E.g.: `avatar` -> `-avatar`
-function componentize(name) {
-  dasherized = dasherize(name);
-  return hasDash(dasherized) ? dasherized : `-${dasherized}`;
-}
-
-function hasDash(string) {
-  return string.indexOf('-') > -1;
-}

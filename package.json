@@ -1,6 +1,6 @@
 {
   "name": "ember-module-unification-blueprint",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Ember CLI blueprint for initializing a Ember application with a module unification layout.",
   "main": "index.js",
   "scripts": {

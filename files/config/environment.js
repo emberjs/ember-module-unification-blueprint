@@ -1,14 +1,15 @@
 /* eslint-env node */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     'ember-resolver': {
       features: {
         EMBER_RESOLVER_MODULE_UNIFICATION: true
       }
     },
-    modulePrefix: '<%= name %>',
-    environment: environment,
+    modulePrefix: '<%= modulePrefix %>',
+    environment,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {

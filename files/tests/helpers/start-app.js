@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Application from '../../app';
+import Application from '../../src/main';
 import config from '../../config/environment';
 
 export default function startApp(attrs) {
